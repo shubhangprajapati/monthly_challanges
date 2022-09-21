@@ -3,6 +3,7 @@ from urllib import response
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+from django.template.loader import render_to_string
 
 # Create your views here.
 monthly_challangess = {
@@ -45,7 +46,11 @@ def monthly_challanges_by_number(request, month):
 def monthly_challanges(request, month):
     try:
         challange_text = monthly_challangess[month]
-        response_data=f"<h1>{challange_text}</h1>"
-        return HttpResponse(response_data)
+        return render(request,"challanges/challange.html",{
+            "text":challange_text,
+            "month_name":month
+        })
+        #response_data=render_to_string("challanges/challange.html")
+        #return HttpResponse(response_data)
     except:
         return HttpResponseNotFound("<h1>this month does not match!</h1>")
