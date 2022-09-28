@@ -11,3 +11,18 @@ header nav{
     justify-content: center;
     align-items: center;
 }
+header nav a{
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+header nav a:hover,
+header nav a:active{
+    color: rgb(174, 47, 174);
+    
+
+}
+
+
